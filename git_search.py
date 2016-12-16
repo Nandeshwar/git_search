@@ -115,7 +115,7 @@ class Git_Search:
                   {
                       "repo_name="",
                       "author": "",
-                      "url": BASE_URL + "projects/RMS/repos/rmnxg/commits/63e348f7a84658910508b089426cbe9c37f2f434",
+                      "url": BASE_URL + "projects/NKS/repos/nandeshwar/commits/63e348f7a84658910508b089426cbe9c37f2f434",
                       "message": "",
                       "date_epoch:123444,
                       "date_gmt:""
