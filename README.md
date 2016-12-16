@@ -51,13 +51,17 @@ python3 git_search.py "search_text=implemented daemo"
 1. Make sure python3 is installed in your system
 
 2.
+
  a. install modue requests using: pip3 install requests
+ 
  b. install module validators: pip3 install validators
  
 3. provide value for BASE_URL given below in code.
+
   Don't worry about about user and password, you will be prompted for these
 	
-	4. Run it like given below:
-  python3 git_search.py "search=search_text"
+	
+	Run it like give belo
+python3 git_search.py "search=search_text"
 or
 python3 git_search.py "author=nandeshwa.sah:10"
