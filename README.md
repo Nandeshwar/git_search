@@ -62,6 +62,9 @@ python3 git_search.py "search_text=implemented daemo"
 	
 	
 	Run it like give belo
+	
 python3 git_search.py "search=search_text"
+
 or
+
 python3 git_search.py "author=nandeshwa.sah:10"
