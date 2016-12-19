@@ -4,8 +4,10 @@
 #   a. install modue requests using: pip3 install requests
 #   b. install module validators: pip3 install validators
 #
-# 3. provide value for BASE_URL given below in code.
-#    Don't worry about about user and password, you will be prompted for these
+# 3. provide value for git_url_list given below in code.
+#    1st url is default url
+#    others are just for reference- that will displayed at run time which can be changed by providing at run time
+#    Don't worry about user and password, you will be prompted at run time
 # 4. Run it like given below:
 #python3 git_search.py "search=search_text"
 #or
@@ -18,10 +20,16 @@ import datetime
 from operator import itemgetter
 import getpass
 import validators
+import copy
 
 # Configuration portion
-BASE_URL = "http://example1.com/"
+git_url_list = [
+    "http://stash.example1.com/",
+    "https://stash.example2.com/"
+]
 BRANCHES = ["master", "develop", "development"]
+
+BASE_URL = git_url_list[0]
 
 
 class Git_Search:
@@ -115,7 +123,7 @@ class Git_Search:
                   {
                       "repo_name="",
                       "author": "",
-                      "url": BASE_URL + "projects/NKS/repos/nandeshwar/commits/63e348f7a84658910508b089426cbe9c37f2f434",
+                      "url": BASE_URL + "projects/RMS/repos/rmnxg/commits/63e348f7a84658910508b089426cbe9c37f2f434",
                       "message": "",
                       "date_epoch:123444,
                       "date_gmt:""
@@ -306,10 +314,7 @@ if __name__ == '__main__':
     arg_len = len(sys.argv)
 
     try:
-        git_url_list = [
-            "http://stash.example1.com/",
-            "https://stash.example2.com/"
-        ]
+
 
         print("BASE URL: " + BASE_URL)
         ans=input("Do want you change BASE URL n :Y/N: ")
@@ -320,7 +325,22 @@ if __name__ == '__main__':
             print()
 
             BASE_URL = input("Enter new BASE URL - Given above are few options: ")
+            BASE_URL = BASE_URL.strip()
 
+        print("The following branches are searched")
+        for branch in BRANCHES:
+            print(branch)
+
+        try:
+            branch_change_answer = input("modify branch by going in script itself or enter y to change it now or just press enter to proceed: ")
+            if branch_change_answer.lower() == "y":
+                branch_list = input("Enter all valid branches separate by comma: ")
+                all_branches=branch_list.split(",")
+                BRANCHES = copy.deepcopy(all_branches)
+
+        except Exception as e:
+            print("Error changing branch name=" + str(e))
+            print("Configures brances will be searched")
         USER = input("GIT User Id: ")
         PASSWORD = getpass.getpass()
 
